@@ -1,0 +1,15 @@
+[package]
+name = "backit"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ansi_term = "0.12.1"
+dirs-next = "2.0.0"
+git2 = "0.20.2"
+inquire = "0.7.5"
+json = "0.12.4"
+serde = { version = "1.0.219", features = ["derive"] }
+tar = "0.4.44"
+toml = "0.8.22"
+zstd = "0.13.3"
