@@ -1,11 +1,12 @@
-use std::{fs, io::{self, BufReader}, path::Path};
-use tar::Archive;
 use crate::failed;
+use std::{
+    fs,
+    io::{self, BufReader},
+    path::Path,
+};
+use tar::Archive;
 
-
-
-
-pub fn unpack_tar_zstd<P: AsRef<Path>>(path: P, dist: P) -> Result<(), io::ErrorKind>{
+pub fn unpack_tar_zstd<P: AsRef<Path>>(path: P, dist: P) -> Result<(), io::ErrorKind> {
     let path = path.as_ref();
 
     let Ok(file) = fs::File::open(path) else {
@@ -21,7 +22,11 @@ pub fn unpack_tar_zstd<P: AsRef<Path>>(path: P, dist: P) -> Result<(), io::Error
     let mut archive = Archive::new(zstd_decoder);
 
     archive.unpack(dist).unwrap_or_else(|e| {
-        failed!("Failed to unpack", "Failed to unpack tar.zst package\n Caused by {}", e);
+        failed!(
+            "Failed to unpack",
+            "Failed to unpack tar.zst package\n Caused by {}",
+            e
+        );
     });
 
     Ok(())

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 #[macro_export]
 #[cfg(target_os = "windows")]
 macro_rules! failed {
@@ -18,7 +11,6 @@ macro_rules! failed {
     };
 }
 
-
 #[macro_export]
 #[cfg(not(target_os = "windows"))]
 macro_rules! failed {
@@ -30,7 +22,3 @@ macro_rules! failed {
         std::process::exit(1);
     };
 }
-
-
-
-
